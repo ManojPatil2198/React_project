@@ -1,82 +1,465 @@
 //import ToDo from "./ToDo"; 
-//import React, { useState } from "react";
+import  { useState } from "react";
 // import Toggle from "./Toggle";
  //import CheckBoxes from "./CheckBoxes";
 
-import { useRef } from "react"
-// useRef hook  example
- function App(){
+// updating array in state 
 
-  const inputRef=useRef(null)
-   const inputHandler=()=>{
-    console.log(inputRef);
-    inputRef.current.focus();
-    inputRef.current.style.color='red'
-    inputRef.current.placeholder='Enter password'
-   }
-   const ToggleHandler=()=>{
-    inputRef.current.style.display='none'
+function App (){
 
-   }
-  return (
-    <>
-     <h2>useRef</h2>
-     <butto onClick={ToggleHandler}>Toggle</butto>
-     <input ref={inputRef} type="text" placeholder="Enter user name"></input>
-     <button onClick={inputHandler}>Focus on Input field</button>
-    </>
+  const [data,setData] = useState ([
+    'anil','sam','peter'
+  ])
+
+  const [dataDetails,setDataDetails] = useState([
+  {
+    name:'anil',age:'29'
+  },
+  {
+    name:'sam',age:'19'
+  },
+  {
+    name:'peter',age:'22'
+  },
+  ]);
+
+  const handleUser =(name)=>{
+  
+    data[data.length-1] =name;
+    console.log(data);
+    setData([...data])
+
+  } 
+  
+  const handleAge =(age)=>{
+  
+    dataDetails[data.length-1].age =age;
+    console.log(dataDetails);
+    setDataDetails([...dataDetails])
+
+  }
+
+
+  return(
+    <div>
+
+     <h1>Updating Array in state</h1>
+     <input type="text" placeholder="enter last user name" 
+      onChange={(e)=>handleUser(e.target.value)}
+     />
+
+     {
+      data.map((item, index) => {
+  return <h3 key={index}>{item}</h3>;
+    
+      })
+     }
+
+     <hr/> 
+     <input type="text" placeholder="enter last user age" 
+      onChange={(e)=>handleAge(e.target.value)}
+     />
+     {
+      dataDetails.map((item,index) =>{
+
+       return <h4 key={index}>{item.name},{item.age}</h4>
+      })
+     }
+
+      </div>
+
+
   )
- }
+}
+
+ export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// updating objects in state
+
+// export default function App() {
+//   const [data, setData] = useState({
+//     name: "Anil",
+//     address: {
+//       city: "Delhi",
+//       country: "India",
+//     },
+//   });
+
+//   const handleName = (val) => {
+//     // ✅ Proper immutable update
+//     setData({
+//       ...data, // जुने values जतन करा
+//       name: val, // फक्त name अपडेट करा
+//     });
+//   };
+
+//   return (
+//     <div style={{ textAlign: "center", marginTop: "40px" }}>
+//       <h1>Updating Objects in State</h1>
+
+//       <input
+//         type="text"
+//         placeholder="Update name"
+//         value={data.name}
+//         onChange={(event) => handleName(event.target.value)}
+//       />
+
+//       <h2>Name: {data.name}</h2>
+//       <h2>City: {data.address.city}</h2>
+//       <h2>Country: {data.address.country}</h2>
+//     </div>
+//   );
+// }
+
+
+
+// import { useState } from "react";
+// import AddUser from "./AddUser";
+// import DisplayUser from "./DisplayUser";
+
+// // Lifting state up in React
+// function App() {
+//   const [user, setUser] = useState("");
+
+//   return (
+//     <div style={{ textAlign: "center", marginTop: "40px" }}>
+//       <h2>Lifting State Up Example</h2>
+//       <AddUser setUser={setUser} />
+//       <DisplayUser user={user} />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+
+//  import { useState } from "react";
+// //derived/drived state example
+// function App() {
+//   const [users, setUsers] = useState([]);
+//   const [user, setUser] = useState("");
+
+//   const handleAddUsers = () => {
+//     if (user.trim() === "") return; // रिकामं value टाळा
+//     setUsers([...users, user]);
+//     setUser(""); // इनपुट रिकामं करा
+//   };
+
+//   const total = users.length;
+//   const last = users[users.length - 1]; // ✅ योग्य पद्धत
+//   const unique = [...new Set(users)].length; // ✅ duplicate काढण्यासाठी
+
+//   return (
+//     <div style={{ textAlign: "center", marginTop: "30px" }}>
+//       <h2>Total Users: {total}</h2>
+//       <h2>Last User: {last ? last : "No users yet"}</h2>
+//       <h2>Unique Users: {unique}</h2>
+
+//       <input
+//         type="text"
+//         value={user}
+//         onChange={(event) => setUser(event.target.value)}
+//         placeholder="Add new user"
+//       />
+//       <button onClick={handleAddUsers}>Add User</button>
+
+//       <div style={{ marginTop: "20px" }}>
+//         {users.map((item, index) => (
+//           <h4 key={index}>{item}</h4>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// pure components 
+    
+
+// function App (){
+
+//  return (
+//  <>
+//   <h1>Keeping Components Pure</h1>   
+//   <Cup guest ={1}/>
+//   <Cup guest ={2}/>
+//   <Cup guest ={3}/>
+
+
+//   </>
+
+//  )
+
+// }
+   
+// const Cup=({guest})=>{
+//    guest = guest +1;
+//   return <h1>We have{guest} guest and we have to make {guest} cup of tea</h1>
+
+// }
+
+// export default App;
+
+
+
+// import { useState, useTransition } from "react";
+
+// // useTransition hook example
+//  function App(){
+//     const [pending,startTransition] =useTransition();
+   
+//   const handleButton = ()=>{
+
+//  startTransition(async ()=>{
+//     await new Promise(res=>setTimeout(res,2000))
+
+
+// })
+//   }
+
+
+//   return (
+//   <div> 
+
+//    <h1>useTransition Hook in react js  19</h1>
+//    {
+//     pending?
+//     <img style={{ width:"100px"}} src="https://tse1.mm.bing.net/th/id/OIP.qq-AunqZLgbVn4cKot4cvwHaHa?cb=12&pid=ImgDet&w=474&h=474&rs=1&o=7&rm=3" alt=""  srcSet="" />:null
+//    }
+
+//    <button disabled={pending}onClick={handleButton}>Click</button>
+   
+
+
+//     </div>
+
+//   );
+
+//  }
+
+//  export default App;
+
+
+// import { useFormStatus } from "react-dom";
+
+
+// // useFormStatus example
+//  function App(){
+  
+//   const handleSubmit=async()=>{
+//    await new Promise(res=>setTimeout(res,2000));
+//     console.log("Submit");
+
+
+//     function CustomerForm(){
+//       const{pending}=useFormStatus();
+//       console.log(pending);
+//     }
+
+
+//     return(
+//       <div>
+//        <input type="text" placeholder="Enter Name"></input>
+//    <br/>
+//    <br/>
+  
+//   <input type="text" placeholder="Enter Password"></input>
+//    <br/>
+//    <br/>     
+//       <button disabled={pending}>{pending?'Submitting...': 'Submit'}</button>
+//       </div>
+
+//     )
+
+//   }
+//     return(
+//   <div>
+//    <h1>useFormStatus Hook in React js 19</h1>
+//    <form action={handleSubmit}>
+//     <CustomerForm/> 
+    
+//    </form>
+
+//   </div>
+//     )
+//  }
  
-export default App;
+//  export default App;
 
 
 
 
+// import UserInput from "./UserInput"; 
+//  // forward ref example
+
+
+//  function App(){
+//   const inputRef=useRef(null)
+
+//   const updateInput=()=>{
+//    inputRef.current.value=1000;
+//    inputRef.current.focus();
+//    inputRef.current.style.color='red';
+
+//   }
+
+//   return (
+//     <>
+//     <h1>Forward Ref</h1>
+//     <UserInput ref={inputRef}/>
+//     <button onClick={updateInput}>update Input field</button>    
+//     </>
+//   )
+
+//  }
+
+// export default App;
 
 
 
+//  import User from "./User";
+  //pass function in component as props
+
+// function App(){
+
+//  const displayName=(name)=>{
+//   alert(name)
+//  }
+
+//    const getUser=()=>{
+//     alert("get user function called")
+//    }
+//   return (
+//     <>
+//     <h1>Call Parent component from child component</h1>
+//     <User displayName={displayName} name="anil" getUser={getUser}/>
+//     <User displayName={displayName} name="manoj" getUser={getUser}/>
+//     <User displayName={displayName} name="ramesh" getUser={getUser}/>
+//     </>
+//   )
+// }
+//  export default App;
 
 
 
+// uncontrolled component
+// function App() {
+//   const userRef = useRef();
+//   const passwordRef = useRef();
+
+//   // Using normal DOM methods
+//   const handleForm = (event) => {
+//     event.preventDefault();
+//     const user = document.querySelector("#user").value;
+//     const password = document.querySelector("#password").value;
+
+//     console.log("handleForm:", user, password);
+//   };
+
+//   // Using useRef
+//   const handleFormRef = (event) => {
+//     event.preventDefault();
+//     const user = userRef.current.value;
+//     const password = passwordRef.current.value;
+
+//     console.log("handleFormRef:", user, password);
+//   };
+
+//   return (
+//     <>
+//       <h1>Uncontrolled Component using document.querySelector()</h1>
+//       <form onSubmit={handleForm}>
+//         <input type="text" id="user" placeholder="Enter user name" />
+//         <br />
+//         <br />
+//         <input type="password" id="password" placeholder="Enter user password" />
+//         <br />
+//         <br />
+//         <button type="submit">Submit with querySelector</button>
+//       </form>
+
+//       <hr />
+
+//       <h1>Uncontrolled Component using useRef()</h1>
+//       <form onSubmit={handleFormRef}>
+//         <input type="text" ref={userRef} placeholder="Enter user name" />
+//         <br />
+//         <br />
+//         <input
+//           type="password"
+//           ref={passwordRef}
+//           placeholder="Enter user password"
+//         />
+//         <br />
+//         <br />
+//         <button type="submit">Submit with useRef</button>
+//       </form>
+//     </>
+//   );
+// }
+
+// export default App;
 
 
 
+// useRef hook  example
+ //function App(){
 
+ // const inputRef=useRef(null)
+//    const inputHandler=()=>{
+//     console.log(inputRef);
+//     inputRef.current.focus();
+//     inputRef.current.style.color='red'
+//     inputRef.current.placeholder='Enter password'
+//    }
+//    const ToggleHandler=()=>{
+//     inputRef.current.style.display='none'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//    }
+//   return (
+//     <>
+//      <h2>useRef</h2>
+//      <butto onClick={ToggleHandler}>Toggle</butto>
+//      <input ref={inputRef} type="text" placeholder="Enter user name"></input>
+//      <button onClick={inputHandler}>Focus on Input field</button>
+//     </>
+//   )
+//  }
+ 
+// export default App;
 
 
 
