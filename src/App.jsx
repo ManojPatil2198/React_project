@@ -1,106 +1,306 @@
 //import ToDo from "./ToDo"; 
-import  { useState } from "react";
 // import Toggle from "./Toggle";
  //import CheckBoxes from "./CheckBoxes";
+import College from "./College"
+
+ export default function App (){
+
+ return (
+   <div style={{backgroundColor:"yellow",padding:10}}>
+   <h1>Context API</h1>
+   <College/>
+
+
+</div>
+ )
+
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import useToggle from "./useToggle"
+//  Make custom hook
+
+// export default function App() {
+//   const [value, toggleValue] = useToggle(true);
+
+//   const [data,setData] = useToggle(true);
+
+
+// //console.log("val----",value);
+
+//  return (
+//     <div>
+//       <button onClick={toggleValue}>Toggle Heading</button>
+//       <button onClick={() => toggleValue(false)}>Hide Heading</button>
+//       <button onClick={() => toggleValue(true)}>Show Heading</button>
+
+//       {value ? <h1>Custom Hooks in React JS</h1> : null}
+//       <hr/>
+//        <button onClick={setData}>Toggle Heading</button>
+//       <button onClick={() => setData(false)}>Hide Heading</button>
+//       <button onClick={() => setData(true)}>Show Heading</button>
+
+//       {data ? <h1>Second Heading</h1> : null}
+//     </div>
+//   );
+// }
+
+
+//import  { Fragment } from "react";
+
+//Fragment example 
+//  function App (){
+
+//   return(
+//   <>
+//    <Data/>
+//    <Data/>
+//    <Data/>
+//    <Data/>
+
+//  </>
+//   );
+//  }
+
+// export default App;
+
+// function Data (){
+//   return(
+//    <div>
+   
+// <span>Hello <span/><b/>User</span>
+
+//    </div>
+//   )
+// }
+
+
+
+// function App (){
+
+ //cuseId example
+
+//   return (
+//  <div>
+//   <UserForm/>
+//   <hr/>
+//   <UserForm/>
+//  </div>
+//   )
+//  }
+
+//  export default App;
+
+
+// function UserForm (){
+//   const name = useId ()
+//   const password = useId ()
+//   const terms = useId ()
+//   const skills = useId ()
+
+//   return (
+//  <div>
+//   <form action="">
+//     <label htmlFor={name}>Enter User Name</label>
+//     <input id={name} type="text" placeholder="enter name"></input>
+//     <br/><br/>
+//     <label htmlFor={skills}>Enter User skills</label>
+//     <input id={skills} type="text" placeholder="enter skills"></input>
+//     <br/><br/>
+//     <label htmlFor={password}>Enter User password</label>
+//     <input id={password} type="text" placeholder="enter password"></input>
+//     <br/><br/>
+
+//     <input id={terms} type="checkbox" placeholder="enter skills"></input>
+//     <label htmlFor={skills}>terms & condition</label>
+
+
+//   </form>
+//  </div>
+//   )
+//  }
+
+
+
+
+// useActionState hook example 
+//import { useActionState } from "react";
+
+
+// function App (){
+   
+//     const  handleSubmit = async (previousData,formData)=>{
+//       let name = formData.get('name');
+//       let password = formData.get('password');
+
+//       await new Promise(res=>setTimeout(res,4000))
+//       console.log("handleSubmit called",name,password);
+//       if(name && password){
+//         return{message:'Data Submitted',name,password}
+//       }
+//       else{
+//        return {error:'Failed to Submit. Enter proper dataS',name,password}
+//       }
+
+
+//     }
+//   const[data,action,pending,] = useActionState(handleSubmit,undefined);
+//   console.log(data);
+    
+//   return(
+//     <div>
+
+//      <h1>useActionState Hook in react js</h1>
+
+//     <form action={action}>
+//     <input defaultValue={data?.name} type="text" placeholder="enter name" name="name"></input>      
+//           <br/><br/>
+
+//     <input defaultValue={data?.password} type="password" placeholder="enter password" name="password"></input>      
+//       <br/><br/>
+//       <button disabled ={pending}>Submit data</button> 
+//       <br/>
+      
+//       </form>
+
+//       {
+//         data?.error && <span style={{color:'red'}}>{data?.error}</span>
+//       }
+//       {
+//         data?.message && <span style={{color:'green'}}>{data?.message}</span>
+//       }
+  
+//        <h3>Name : {data?.name}</h3>
+//        <h3>Password : {data?.password}</h3>
+//       </div>
+
+//   );
+// }
+
+
+// export default App;
+
+
 
 // updating array in state 
 
-function App (){
+// function App (){
 
-  const [data,setData] = useState ([
-    'anil','sam','peter'
-  ])
+//   const [data,setData] = useState ([
+//     'anil','sam','peter'
+//   ])
 
-  const [dataDetails,setDataDetails] = useState([
-  {
-    name:'anil',age:'29'
-  },
-  {
-    name:'sam',age:'19'
-  },
-  {
-    name:'peter',age:'22'
-  },
-  ]);
+//   const [dataDetails,setDataDetails] = useState([
+//   {
+//     name:'anil',age:'29'
+//   },
+//   {
+//     name:'sam',age:'19'
+//   },
+//   {
+//     name:'peter',age:'22'
+//   },
+//   ]);
 
-  const handleUser =(name)=>{
+//   const handleUser =(name)=>{
   
-    data[data.length-1] =name;
-    console.log(data);
-    setData([...data])
+//     data[data.length-1] =name;
+//     console.log(data);
+//     setData([...data])
 
-  } 
+//   } 
   
-  const handleAge =(age)=>{
+//   const handleAge =(age)=>{
   
-    dataDetails[data.length-1].age =age;
-    console.log(dataDetails);
-    setDataDetails([...dataDetails])
+//     dataDetails[data.length-1].age =age;
+//     console.log(dataDetails);
+//     setDataDetails([...dataDetails])
 
-  }
+//   }
 
 
-  return(
-    <div>
+//   return(
+//     <div>
 
-     <h1>Updating Array in state</h1>
-     <input type="text" placeholder="enter last user name" 
-      onChange={(e)=>handleUser(e.target.value)}
-     />
+//      <h1>Updating Array in state</h1>
+//      <input type="text" placeholder="enter last user name" 
+//       onChange={(e)=>handleUser(e.target.value)}
+//      />
 
-     {
-      data.map((item, index) => {
-  return <h3 key={index}>{item}</h3>;
+//      {
+//       data.map((item, index) => {
+//   return <h3 key={index}>{item}</h3>;
     
-      })
-     }
+//       })
+//      }
 
-     <hr/> 
-     <input type="text" placeholder="enter last user age" 
-      onChange={(e)=>handleAge(e.target.value)}
-     />
-     {
-      dataDetails.map((item,index) =>{
+//      <hr/> 
+//      <input type="text" placeholder="enter last user age" 
+//       onChange={(e)=>handleAge(e.target.value)}
+//      />
+//      {
+//       dataDetails.map((item,index) =>{
 
-       return <h4 key={index}>{item.name},{item.age}</h4>
-      })
-     }
+//        return <h4 key={index}>{item.name},{item.age}</h4>
+//       })
+//      }
 
-      </div>
-
-
-  )
-}
-
- export default App;
+//       </div>
 
 
+//   )
+// }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//  export default App;
 
 
 
