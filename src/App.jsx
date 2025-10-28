@@ -1,42 +1,40 @@
 //import ToDo from "./ToDo"; 
 // import Toggle from "./Toggle";
  //import CheckBoxes from "./CheckBoxes";
-import College from "./College"
 
- export default function App (){
+ import { Navigate, Routes, Route } from "react-router";
+import Home from "./Home";
+import Login from "./Login";
+import About from "./About";
+import NavBar from "./NavBar";
+import { PageNotFound } from "./PageNotFound";
+import College from "./College";
+import Student from "./Student";
+import Department from "./Department";
+import Detail from "./Details";
 
- return (
-   <div style={{backgroundColor:"yellow",padding:10}}>
-   <h1>Context API</h1>
-   <College/>
+function App() {
+  return (
+    <>
+      <NavBar />
 
+      <Routes>
+        <Route path="college" element={<College />}>
+          <Route path="student" element={<Student />} />
+          <Route path="department" element={<Department />} />
+          <Route path="detail" element={<Detail />} />
+        </Route>
 
-</div>
- )
+        {/* Redirect or 404 */}
+        <Route path="/*" element={<Navigate to="/college" />} />
+      </Routes>
 
- }
+      Basic Pages with React-Routing
+    </>
+  );
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default App;
 
 
 
@@ -61,6 +59,75 @@ import College from "./College"
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // react router 7 example
+// import { BrowserRouter, Routes, Route, Link } from "react-router";
+
+// export default function App() {
+//   return (
+//     <div>
+//       <BrowserRouter>
+//         <nav>
+//           <Link to="/">Home</Link> |{" "}
+//           <Link to="/about">About</Link> |{" "}
+//           <Link to="/contact">Contact</Link>
+//         </nav>
+
+//         <Routes>
+//           <Route path="/" element={<h1>Home</h1>} />
+//           <Route path="/about" element={<h1>About</h1>} />
+//           <Route path="/contact" element={<h1>Contact</h1>} />
+//         </Routes>
+//       </BrowserRouter>
+//     </div>
+//   );
+// }
+
+
+
+
+// Context Api example
+// import { useState } from "react"
+// import College from "./College"
+// import { SubjectContext } from "./ContextData"
+
+//  export default function App (){
+//   const [subject,SetSubject]=useState('')
+
+
+//  return (
+//    <div style={{backgroundColor:"yellow",padding:10}}>
+//    <SubjectContext.Provider value={subject}>
+//     <select value={subject} onChange={(event)=>SetSubject(event.target.value)}>
+//       <option value="">Select Subject</option>
+//       <option value="History">History</option>
+//       <option value="Maths">Maths</option>
+//       <option value="English">English</option>
+//     </select>
+//     <h1>Context API</h1>
+//     <button onClick={()=>SetSubject('')}>Clear Subject</button>
+
+//    <College/>
+
+//    </SubjectContext.Provider>  
+// </div>
+//  )
+
+//  }
 
 
 
